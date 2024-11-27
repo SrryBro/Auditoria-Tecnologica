@@ -2,10 +2,13 @@ const express = require('express');
 const sequelize = require('./config/database');
 const auditoria = require('./models/auditoria');
 const Reporte = require('./models/Reporte');
-const app = express();
+const cors = require('cors'); // Importar el middleware CORS
 const PORT = 3000;
+const app = express();
+app.use(cors());
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 sequelize.authenticate()
     .then(() => console.log('Conexión a la base de datos exitosa'))
@@ -25,3 +28,7 @@ app.use('/auditorias', auditoriasRoutes);
 
 const reportesRoutes = require('./routes/reportes');
 app.use('/auditorias', reportesRoutes); // Aquí se usa "auditorias" para indicar que los reportes son parte de la auditoría
+
+
+
+
