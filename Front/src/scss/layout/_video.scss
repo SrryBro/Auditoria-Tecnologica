@@ -1,0 +1,38 @@
+@use 'base/variables' as v; 
+@use 'base/mixins' as m;
+
+.video {
+    position: relative;
+    min-height: 50rem;
+    max-height: 60rem;
+    overflow: hidden;
+    .overlay {
+        position: absolute;
+        background: linear-gradient(
+            270deg,
+            rgba(v.$morado, 60%),
+            rgba(darken(v.$verde, 20%), 30%)
+        );
+        inset: 0;
+        display: flex;
+        align-items: center; 
+    }
+    video {
+        width: auto;
+        display: block;
+        @include m.desktop {
+            width: 100%;
+        }
+    }
+}
+
+.titulo {
+    z-index: 10;
+    h2 {
+        color: v.$blanco;
+        margin: 0;
+        font-size: 7rem;
+    }
+
+
+ }

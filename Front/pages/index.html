@@ -19,8 +19,50 @@
         </div>
     </header>
 
-    <section class="">
-        
+    <div class="video">
+        <div class="overlay">
+            <div class="contenedor titulo">
+                <h2>Aditory</h2>
+            </div>
+        </div>
+        <video autoplay loop mute>
+            <source src="../src/gallery/video/video-01.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+
+    <section class="auditoria">
+
+        <div class="auditoria__contenido contenedor">
+            <h2>Crea una Aditoria</h2>
+            <form class="auditoria__formulario">
+                    <div class="auditoria__texto">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre" placeholder="Añade un nombre">
+                    </div>
+
+                    <div class="auditoria__texto ">
+                        <label>Ubicación</label>
+                        <input type="text" id="ubicacion" placeholder="Añade una ubicación">
+                    </div>
+
+                    <div class="auditoria__texto ">
+                        <label>Fecha</label>
+                        <input type="text" id="fecha" placeholder="Añade una fecha">
+                    </div>
+                    
+                    <div class="auditoria__texto ">
+                        <label>Auditor</label>
+                        <input type="text" id="auditor" placeholder="Añade un auditor">
+                    </div>
+                    <button type="submit" id="button">Crear</button>
+            </form> 
+        </div>
+
+        <div class="auditoria__grid contenedor">
+        </div>
+
     </section>
 
 
