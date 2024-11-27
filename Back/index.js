@@ -22,3 +22,6 @@ sequelize.sync({ force: false }) // Cambia "force" a "false" después de la prim
 
 const auditoriasRoutes = require('./routes/auditorias');
 app.use('/auditorias', auditoriasRoutes);
+
+const reportesRoutes = require('./routes/reportes');
+app.use('/auditorias', reportesRoutes); // Aquí se usa "auditorias" para indicar que los reportes son parte de la auditoría
