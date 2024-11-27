@@ -1,0 +1,48 @@
+@use 'base/variables' as v; 
+@use 'base/mixins' as m;
+
+.auditoria__contenido {
+    background-color: v.$verde;
+    padding: 2rem;
+    color: v.$blanco;
+    border-radius: 2rem;
+    max-width: 80rem;
+}
+
+.auditoria__formulario {
+    display: flex;
+    flex-direction: column;
+    column-gap: 2rem;
+
+    .auditoria__texto {
+        display: flex;
+        flex-direction: column;
+        color: v.$blanco;
+        input {
+            border-radius: .5rem;
+            border-style: none;
+            padding: 1rem
+        }
+        label {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-top: 2rem;
+        }
+    }
+
+    button {
+        max-width: 10rem;
+        margin-top: 2rem;
+        border-radius: 1rem;
+        padding: 1rem 0;
+        border-style: none;
+        font-size: 2rem;
+        
+    }
+}
+
+.auditoria__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+     
+}
