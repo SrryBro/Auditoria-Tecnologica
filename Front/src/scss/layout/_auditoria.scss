@@ -44,5 +44,17 @@
 .auditoria__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-     
+    column-gap: 2rem;
+}
+
+.auditoria__item {
+    color: v.$blanco;
+    background-color: v.$rosa;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+    border-radius: 2rem;
+        h3 {
+            font-size: 3rem;
+        }
 }

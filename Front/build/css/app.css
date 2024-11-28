@@ -468,4 +468,17 @@ template {
 .auditoria__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  column-gap: 2rem;
+}
+
+.auditoria__item {
+  color: #FFFFFF;
+  background-color: #F53756;
+  padding: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  border-radius: 2rem;
+}
+.auditoria__item h3 {
+  font-size: 3rem;
 }

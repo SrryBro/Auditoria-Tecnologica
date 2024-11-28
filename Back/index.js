@@ -28,7 +28,6 @@ app.use('/auditorias', auditoriasRoutes);
 
 const reportesRoutes = require('./routes/reportes');
 app.use('/auditorias', reportesRoutes); // Aquí se usa "auditorias" para indicar que los reportes son parte de la auditoría
-
-
+app.use('/reportes', reportesRoutes);
 
 

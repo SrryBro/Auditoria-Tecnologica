@@ -1,44 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function(){
-//     crearAuditoria();
-// } );
-
-
-
-// function crearAuditoria () {
-//     const add = document.querySelector('#button')
-//     const inputName = document.querySelector('#nombre')
-//     const inputUb = document.querySelector('#ubicacion')
-//     const inputDate = document.querySelector('#fecha')
-//     const inputAud = document.querySelector('#auditor')
-//     const grid = document.querySelector('.auditoria__grid')
-
-//     add.addEventListener('click', function (e) {
-//         e.preventDefault();
-//         const nombre = document.createElement('P')
-//         const ubicacion = document.createElement('P')
-//         const fecha = document.createElement('P')
-//         const auditor = document.createElement('P')
-//         const auditoria = document.createElement('A')
-
-//         nombre.textContent = inputName.value;
-//         ubicacion.textContent = inputUb.value;
-//         fecha.textContent = inputDate.value;
-//         auditor.textContent = inputAud.value
-
-    
-//         auditoria.appendChild(nombre)
-//         auditoria.appendChild(ubicacion)
-//         auditoria.appendChild(fecha)
-//         auditoria.appendChild(auditor)
-    
-//         grid.appendChild(auditoria)
-//     }) 
-
-// }
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.querySelector('.auditoria__formulario'); // Seleccionamos el foclearmulario
     const contenedorAuditorias = document.querySelector('.auditoria__grid'); // Contenedor para las auditorías
@@ -58,22 +17,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    function redirigirACrearReporte(auditoriaId) {
+        // Cambia la URL según la estructura de tus archivos
+        window.location.href = `reportes.html?auditoriaId=${auditoriaId}`;
+    }
+
     // Función para renderizar las auditorías en el HTML
     const mostrarAuditorias = (auditorias) => {
         contenedorAuditorias.innerHTML = ''; // Limpia el contenedor antes de renderizar
-
+    
         auditorias.forEach((auditoria) => {
             const div = document.createElement('div');
-            div.classList.add('auditoria__item'); // Puedes agregar estilos con esta clase
+            div.classList.add('auditoria__item'); // Clase para estilos
             div.innerHTML = `
                 <h3>${auditoria.nombre}</h3>
                 <p><strong>Ubicación:</strong> ${auditoria.ubicacion}</p>
                 <p><strong>Fecha:</strong> ${auditoria.fecha}</p>
                 <p><strong>Auditor:</strong> ${auditoria.auditor}</p>
+                <button class="btn-eliminar" data-id="${auditoria.id}">Eliminar</button>
+                <button class="btn-reporte" data-id="${auditoria.id}">Crear Reporte</button>
             `;
+    
             contenedorAuditorias.appendChild(div);
         });
+    
+        // Agregar eventos a los botones después de renderizar
+        document.querySelectorAll('.btn-eliminar').forEach((btn) => {
+            btn.addEventListener('click', eliminarAuditoria);
+        });
+    
+        document.querySelectorAll('.btn-reporte').forEach((btn) => {
+            btn.addEventListener('click', redirigirACrearReporte);
+        });
     };
+    
 
     // Evento de envío del formulario
     formulario.addEventListener('submit', async (event) => {
@@ -123,6 +100,30 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('No se pudo conectar al servidor');
         }
     });
+
+
+    const eliminarAuditoria = async (event) => {
+        const id = event.target.dataset.id; // Obtiene el ID de la auditoría desde el atributo data-id
+    
+        const confirmar = confirm('¿Estás seguro de eliminar esta auditoría?');
+        if (!confirmar) return;
+    
+        try {
+            const response = await fetch(`http://localhost:3000/auditorias/${id}`, {
+                method: 'DELETE',
+            });
+    
+            if (response.ok) {
+                alert('Auditoría eliminada con éxito');
+                obtenerAuditorias(); // Actualiza la lista de auditorías
+            } else {
+                alert('Error al eliminar la auditoría');
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+            alert('No se pudo conectar al servidor');
+        }
+    };
 
     // Inicializa mostrando las auditorías existentes
     obtenerAuditorias();
