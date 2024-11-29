@@ -7,6 +7,7 @@ const Reporte = sequelize.define('Reporte', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+        allowNull: false,
     },
     titulo: {
         type: DataTypes.STRING,
@@ -21,6 +22,18 @@ const Reporte = sequelize.define('Reporte', {
         allowNull: false,
     },
     autor: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    tipo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    gravedad: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    area: {
         type: DataTypes.STRING,
         allowNull: false,
     },

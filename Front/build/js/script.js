@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             div.classList.add('auditoria__item'); // Clase para estilos
             div.innerHTML = `
                 <h3>${auditoria.nombre}</h3>
-                <p><strong>Ubicación:</strong> ${auditoria.ubicacion}</p>
-                <p><strong>Fecha:</strong> ${auditoria.fecha}</p>
-                <p><strong>Auditor:</strong> ${auditoria.auditor}</p>
+                <p><strong>Ubicación</strong> ${auditoria.ubicacion}</p>
+                <p><strong>Fecha</strong> ${auditoria.fecha}</p>
+                <p><strong>Auditor</strong> ${auditoria.auditor}</p>
                 <button class="btn-eliminar" data-id="${auditoria.id}">Eliminar</button>
                 <button class="btn-reporte" data-id="${auditoria.id}">Crear Reporte</button>
             `;

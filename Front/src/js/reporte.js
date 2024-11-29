@@ -14,13 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const descripcion = document.querySelector('#descripcion').value.trim();
         const fecha = document.querySelector('#fecha').value.trim();
         const autor = document.querySelector('#autor').value.trim();
+        const tipo = document.querySelector('#tipo').value.trim();
+        const gravedad = document.querySelector('#gravedad').value.trim()
+        const area = document.querySelector('#area').value.trim();
     
-        if (!titulo || !descripcion || !fecha || !autor) {
+        if (!titulo || !descripcion || !fecha || !autor || !tipo || !gravedad || !area) {
             alert('Todos los campos son obligatorios');
             return;
         }
     
-        const data = { titulo, descripcion, fecha, autor, auditoriaId };
+        const data = { titulo, descripcion, fecha, autor, auditoriaId, tipo, gravedad, area };
     
         try { 
             const response = await fetch(`http://localhost:3000/auditorias/${auditoriaId}/reportes`, {
@@ -76,8 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
             div.innerHTML = `
                 <h3>${reporte.titulo}</h3>
                 <p><strong>Auditoría ID:</strong> ${reporte.auditoriaId}</p>
-                <p><strong>Descripción:</strong> ${reporte.descripcion}</p>
                 <p><strong>Fecha de creación:</strong> ${new Date(reporte.createdAt).toLocaleDateString()}</p>
+                <p><strong>Tipo de incidencia:</strong> ${reporte.tipo}</p>
+                <p><strong>Gravedad de incidencia:</strong> ${reporte.gravedad}</p>
+                <p><strong>Area afectada:</strong> ${reporte.area}</p>
+                <p><strong>Descripción:</strong> ${reporte.descripcion}</p>
                 <button class="btn-eliminar" data-id="${reporte.id}">Eliminar</button>
             `;
             contenedorReportes.appendChild(div);
@@ -96,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!confirmar) return;
         
             try {
-                const response = await fetch(`http://localhost:3000/reportes/${id}`, {
+                const response = await fetch(`http://localhost:3000/auditorias/reportes/${id}`, {
                     method: 'DELETE',
                 });
         

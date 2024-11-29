@@ -17,7 +17,7 @@ router.get('/reportes', async (req, res) => {
 router.post('/:auditoriaId/reportes', async (req, res) => {
     try {
         const { auditoriaId } = req.params;
-        const { titulo, descripcion, fecha, autor } = req.body;
+        const { titulo, descripcion, fecha, autor, tipo, gravedad, area } = req.body;
         
         // Verificar si la auditoría existe
         const auditoria = await Auditoria.findByPk(auditoriaId);
@@ -31,6 +31,9 @@ router.post('/:auditoriaId/reportes', async (req, res) => {
             descripcion,
             fecha,
             autor,
+            tipo,
+            gravedad,
+            area
         });
 
         res.status(201).json(nuevoReporte);
