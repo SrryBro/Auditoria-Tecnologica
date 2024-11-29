@@ -3,6 +3,16 @@ const Reporte = require('../models/Reporte');
 const Auditoria = require('../models/auditoria');
 const router = express.Router();
 
+// Obtener todos los reportes
+router.get('/reportes', async (req, res) => {
+    try {
+        const reportes = await Reporte.findAll(); // Método Sequelize para obtener todos los reportes
+        res.status(200).json(reportes);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener los reportes', detalle: error.message });
+    }
+});
+
 // Crear un reporte para una auditoría
 router.post('/:auditoriaId/reportes', async (req, res) => {
     try {

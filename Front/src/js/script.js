@@ -47,8 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     
         document.querySelectorAll('.btn-reporte').forEach((btn) => {
-            btn.addEventListener('click', redirigirACrearReporte);
+            btn.addEventListener('click', (event) => {
+                const auditoriaId = event.target.dataset.id; // Obtén el id desde el atributo data-id
+                redirigirACrearReporte(auditoriaId); // Pasa el id como argumento
+            });
         });
+        
     };
     
 

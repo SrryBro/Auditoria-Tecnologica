@@ -18,15 +18,32 @@
             <h2>Crear Reporte para Auditoría</h2>
             <form class="reporte__formulario">
                 <div class="reporte__texto">
+                    <label>Titulo</label>
+                    <input type="text"  id="titulo" placeholder="Añade un titulo">
+                </div>
+                <div class="reporte__texto">
+                    <label>Autor</label>
+                    <input type="text"  id="autor" placeholder="Añade un autor">
+                </div>
+                <div class="reporte__texto">
                     <label>Descripción</label>
                     <textarea id="descripcion" placeholder="Añade una descripción"></textarea>
                 </div>
                 <div class="reporte__texto">
                     <label>Fecha</label>
-                    <input type="text" id="fecha" placeholder="Añade la fecha del reporte">
+                    <input type="date" id="fecha" placeholder="Añade la fecha del reporte">
                 </div>
                 <button type="submit">Crear Reporte</button>
             </form>
+        </div>
+    </section>
+
+    <section class="reportes">
+        <div class="contenedor">
+            <h2>Lista de Reportes</h2>
+            <div class="reportes__grid" id="contenedor-reportes">
+                <!-- Aquí se insertarán los reportes dinámicamente -->
+            </div>
         </div>
     </section>
 
