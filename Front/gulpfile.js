@@ -38,7 +38,7 @@ const sass = gulpSass(dartSass);
 // }
 
 export function js(done){ 
-    src('src/js/script.js')
+    src('src/js/**.js')
         .pipe( dest('build/js'))
 
     done()

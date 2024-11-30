@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   color: #000000;
@@ -375,7 +375,7 @@ template {
 }
 
 .header {
-  background-color: #4CB8B3;
+  background-color: #000;
   padding: 1rem;
 }
 .header h1 {
@@ -404,7 +404,6 @@ template {
 }
 .video .overlay {
   position: absolute;
-  background: linear-gradient(270deg, rgba(117, 47, 151, 0.6), rgba(44.872, 113.128, 109.968, 0.3));
   inset: 0;
   display: flex;
   align-items: center;
@@ -428,35 +427,57 @@ template {
   font-size: 7rem;
 }
 
-.auditoria__contenido {
-  background-color: #4CB8B3;
-  padding: 2rem;
-  color: #FFFFFF;
-  border-radius: 2rem;
-  max-width: 80rem;
+.auditoria,
+.reporte {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.auditoria__formulario {
+.auditoria__contenido,
+.reporte__contenido {
+  background-color: #cc9d78;
+  padding: 5rem;
+  color: #FFFFFF;
+  max-width: 80rem;
+  max-height: 70rem;
+}
+
+.reporte__contenido {
+  max-height: 110rem;
+}
+
+.auditoria__formulario,
+.reporte__formulario {
   display: flex;
   flex-direction: column;
   column-gap: 2rem;
 }
-.auditoria__formulario .auditoria__texto {
+.auditoria__formulario .auditoria__texto,
+.auditoria__formulario .reporte__texto,
+.reporte__formulario .auditoria__texto,
+.reporte__formulario .reporte__texto {
   display: flex;
   flex-direction: column;
   color: #FFFFFF;
 }
-.auditoria__formulario .auditoria__texto input {
+.auditoria__formulario .auditoria__texto input,
+.auditoria__formulario .reporte__texto input,
+.reporte__formulario .auditoria__texto input,
+.reporte__formulario .reporte__texto input {
   border-radius: 0.5rem;
   border-style: none;
   padding: 1rem;
 }
-.auditoria__formulario .auditoria__texto label {
+.auditoria__formulario .auditoria__texto label,
+.auditoria__formulario .reporte__texto label,
+.reporte__formulario .auditoria__texto label,
+.reporte__formulario .reporte__texto label {
   font-size: 2.5rem;
   font-weight: 900;
-  margin-top: 2rem;
+  margin: 2rem 0 1rem 0;
 }
-.auditoria__formulario button {
+.auditoria__formulario button,
+.reporte__formulario button {
   max-width: 10rem;
   margin-top: 2rem;
   border-radius: 1rem;
@@ -465,7 +486,92 @@ template {
   font-size: 2rem;
 }
 
+.reporte__formulario button {
+  max-width: 15rem;
+}
+
 .auditoria__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  row-gap: 2rem;
+}
+
+.auditoria__item,
+.reporte__item {
+  padding: 4rem;
+  border-radius: 0.5rem;
+}
+.auditoria__item h3,
+.reporte__item h3 {
+  font-size: 2.5rem;
+  text-align: left;
+}
+.auditoria__item .btn-eliminar,
+.auditoria__item .btn-reporte,
+.reporte__item .btn-eliminar,
+.reporte__item .btn-reporte {
+  border-style: none;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+}
+.auditoria__item .btn-eliminar:hover,
+.auditoria__item .btn-reporte:hover,
+.reporte__item .btn-eliminar:hover,
+.reporte__item .btn-reporte:hover {
+  cursor: pointer;
+  background-color: #cc9d78;
+  color: #FFFFFF;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal__contenido {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  overflow-y: auto;
+  max-height: 80%;
+}
+
+.modal__cerrar {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.modal.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.oculto {
+  display: none;
+}
+
+.footer {
+  background-color: #000000;
+  padding: 2rem;
+}
+.footer p {
+  text-align: center;
+  color: #FFFFFF;
 }

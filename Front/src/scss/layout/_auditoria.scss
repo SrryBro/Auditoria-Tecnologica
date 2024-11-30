@@ -1,20 +1,36 @@
 @use 'base/variables' as v; 
 @use 'base/mixins' as m;
 
-.auditoria__contenido {
-    background-color: v.$verde;
-    padding: 2rem;
-    color: v.$blanco;
-    border-radius: 2rem;
-    max-width: 80rem;
+.auditoria,
+.reporte {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.auditoria__formulario {
+
+
+.auditoria__contenido,
+.reporte__contenido {
+    background-color: #cc9d78;
+    padding: 5rem;
+    color: v.$blanco;
+    max-width: 80rem;
+    max-height: 70rem;
+}
+
+.reporte__contenido {
+    max-height: 110rem;
+}
+
+
+.auditoria__formulario,
+.reporte__formulario {
     display: flex;
     flex-direction: column;
     column-gap: 2rem;
 
-    .auditoria__texto {
+    .auditoria__texto,
+    .reporte__texto {
         display: flex;
         flex-direction: column;
         color: v.$blanco;
@@ -26,12 +42,12 @@
         label {
             font-size: 2.5rem;
             font-weight: 900;
-            margin-top: 2rem;
+            margin: 2rem 0 1rem 0;
         }
     }
 
     button {
-        max-width: 10rem;
+        max-width: 10rem;   
         margin-top: 2rem;
         border-radius: 1rem;
         padding: 1rem 0;
@@ -41,8 +57,35 @@
     }
 }
 
+.reporte__formulario {
+    button {
+        max-width: 15rem;
+    }
+}
+
 .auditoria__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-     
+    row-gap: 2rem;
+}
+
+.auditoria__item,
+.reporte__item {
+    padding: 4rem;
+    border-radius: 0.5rem;
+        h3 {
+            font-size: 2.5rem;
+            text-align: left;
+        }
+        .btn-eliminar,
+        .btn-reporte {
+            border-style: none;
+            border-radius: 0.5rem;
+            padding: 1rem 2rem;
+            &:hover {
+                cursor: pointer;
+                background-color: #cc9d78;
+                color: v.$blanco;
+            }
+        }
+
 }
